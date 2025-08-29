@@ -1,0 +1,226 @@
+<!--
+LinkedIn Dashboard - High-Fidelity HTML Prototype
+Contains:
+ - Full single-file HTML/CSS/JS prototype of a LinkedIn-style dashboard
+ - Accessible, responsive layout: Header, Left Sidebar, Main feed, Right News sidebar
+ - Inline annotations (as comment blocks) and a printable brief (see #brief section)
+
+Design notes (short):
+ - Colors use LinkedIn blue #0A66C2, neutrals for readability
+ - Typography uses system fonts for performance; sizes chosen for accessibility
+ - Focus states, aria-labels, and semantic elements included
+ - Layout uses CSS Grid with responsive breakpoints
+
+How to use:
+ - Open this HTML file in a browser to view the interactive prototype
+ - Print the #brief section for the 1-2 page deliverable
+ - Copy the code into your Figma prototype as reference layers or export
+
+-->
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>LinkedIn Dashboard — Prototype</title>
+  <meta name="description" content="High-fidelity HTML prototype of a LinkedIn dashboard: header, sidebar, feed, news." />
+  <link rel="stylesheet" href="LinkdIn.css">
+</head>
+<body>
+
+<header class="site-header no-print" role="banner">
+  <div class="header-inner">
+    <div class="brand" aria-hidden="true">
+      <div class="logo" aria-hidden="true">in</div>
+      <div style="font-weight:700">LinkedIn<span class="muted" style="font-weight:400;margin-left:6px">• Prototype</span></div>
+    </div>
+
+    <div class="search" role="search" aria-label="Search LinkedIn">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 21l-4.35-4.35" stroke="#667085" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path><circle cx="11" cy="11" r="6" stroke="#667085" stroke-width="1.6"/></svg>
+      <input type="search" placeholder="Search" aria-label="Search input" />
+    </div>
+
+    <nav class="header-nav" role="navigation" aria-label="Primary">
+      <a class="nav-item current" href="#" aria-current="page"><span>Home</span></a>
+      <a class="nav-item" href="#">My Network</a>
+      <a class="nav-item" href="#">Jobs</a>
+      <a class="nav-item" href="#">Messaging</a>
+      <a class="nav-item" href="#">Notifications</a>
+      <a class="nav-item" href="#">Me</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <!-- LEFT SIDEBAR -->
+  <aside class="sidebar no-print" aria-label="Sidebar">
+    <div class="profile-mini card" aria-hidden="false">
+      <div class="top">
+        <div class="avatar" aria-hidden="true">AP</div>
+        <div style="flex:1">
+          <div style="font-weight:700">Akash Pandey</div>
+          <div class="muted" style="font-size:13px">Frontend Developer • Fresher</div>
+        </div>
+      </div>
+      <button aria-label="Edit profile">Edit profile</button>
+      <div style="display:flex;gap:10px;margin-top:8px;font-size:13px;color:var(--muted)">
+        <div><strong>26</strong><div class="muted">Connections</div></div>
+        <div><strong>3</strong><div class="muted">Jobs applied</div></div>
+      </div>
+    </div>
+
+    <nav class="quick-links no-print" aria-label="Quick links">
+      <div class="muted" style="margin:8px 0 6px 6px;font-weight:600">Quick links</div>
+      <div style="background:transparent;padding:0">
+        <a href="#"><span>👥</span> My Network</a>
+        <a href="#"><span>💼</span> Jobs</a>
+        <a href="#"><span>✉️</span> Messaging</a>
+        <a href="#"><span>👥</span> Groups</a>
+        <a href="#"><span>📅</span> Events</a>
+        <a href="#"><span>#</span> #frontend</a>
+      </div>
+    </nav>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="feed" role="main">
+
+    <!-- Profile Summary Card -->
+    <section class="card profile-summary" aria-labelledby="profile-heading">
+      <div class="avatar" style="width:72px;height:72px;font-size:20px">AP</div>
+      <div class="meta">
+        <div id="profile-heading" style="font-weight:700;font-size:16px">Akash Pandey</div>
+        <div class="muted" style="font-size:14px">Aspiring Frontend Developer • React • TypeScript • UI/UX</div>
+        <div style="margin-top:8px;font-size:13px;color:var(--muted)">Location: Pune, India</div>
+      </div>
+      <div style="margin-left:auto;display:flex;flex-direction:column;align-items:flex-end">
+        <button class="edit-btn" aria-label="Edit profile">Edit profile</button>
+        <div class="muted" style="font-size:12px;margin-top:8px">Profile strength: <strong>Beginner</strong></div>
+      </div>
+    </section>
+
+    <!-- Create Post -->
+    <section class="card create-post" aria-labelledby="create-heading">
+      <div class="avatar" style="width:48px;height:48px;font-size:16px">AP</div>
+      <div style="flex:1">
+        <input class="input" aria-label="Start a post" placeholder="Start a post" />
+        <div class="post-actions" role="toolbar" aria-label="Create post actions">
+          <button aria-pressed="false"><span>📷</span> Photo</button>
+          <button aria-pressed="false"><span>🎥</span> Video</button>
+          <button aria-pressed="false"><span>🗓️</span> Event</button>
+          <button aria-pressed="false"><span>✍️</span> Article</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activity feed list -->
+    <section aria-label="Activity feed">
+
+      <!-- Post 1 -->
+      <article class="card post" aria-labelledby="post1">
+        <div class="avatar" style="width:56px;height:56px">AP</div>
+        <div class="post-body">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="font-weight:700">Akash Pandey</div>
+            <div class="muted" style="font-size:13px">· 2d</div>
+          </div>
+          <p id="post1" style="margin:8px 0">Excited to share my first project built with React and Tailwind! I learned a lot about component design and state management. Happy to connect with others building UI.</p>
+          <div style="font-size:13px;color:var(--muted)">React • Frontend • UI</div>
+
+          <div class="post-actions">
+            <button class="icon-btn" aria-label="Like post">👍 Like</button>
+            <button class="icon-btn" aria-label="Comment on post">💬 Comment</button>
+            <button class="icon-btn" aria-label="Share post">🔁 Share</button>
+          </div>
+        </div>
+      </article>
+
+      <!-- Post 2 -->
+      <article class="card post" aria-labelledby="post2">
+        <div class="avatar" style="width:56px;height:56px">KS</div>
+        <div class="post-body">
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="font-weight:700">Kriti Sharma</div>
+            <div class="muted" style="font-size:13px">· 1w</div>
+          </div>
+          <p id="post2" style="margin:8px 0">Sharing tips about building accessible forms — labels, aria-describedby, and keyboard navigation are key.</p>
+          <div style="font-size:13px;color:var(--muted)">Accessibility • Frontend</div>
+
+          <div class="post-actions">
+            <button class="icon-btn" aria-label="Like post">👍 Like</button>
+            <button class="icon-btn" aria-label="Comment on post">💬 Comment</button>
+            <button class="icon-btn" aria-label="Share post">🔁 Share</button>
+          </div>
+        </div>
+      </article>
+
+    </section>
+
+  </main>
+
+  <!-- RIGHT SIDEBAR -->
+  <aside class="no-print" aria-label="Right sidebar">
+    <div class="card" style="margin-bottom:12px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div style="font-weight:700">LinkedIn News</div>
+        <div class="muted">Top</div>
+      </div>
+      <div style="margin-top:10px" class="news-list">
+        <div class="news-item">
+          <div style="font-weight:700">Design systems accelerate UI development</div>
+          <small class="muted">· 12h • 5,400 readers</small>
+        </div>
+        <div class="news-item">
+          <div style="font-weight:700">How junior devs can land their first job</div>
+          <small class="muted">· 1d • 3,200 readers</small>
+        </div>
+        <div class="news-item">
+          <div style="font-weight:700">Top skills hiring managers want in 2025</div>
+          <small class="muted">· 3d • 9,800 readers</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div style="font-weight:700">People you may know</div>
+      <div style="display:flex;flex-direction:column;gap:8px;margin-top:8px">
+        <div style="display:flex;gap:8px;align-items:center"><div class="avatar" style="width:36px;height:36px;font-size:12px">RJ</div><div style="flex:1">Rajat Jain</div><button style="background:var(--linkedin-blue);color:white;border-radius:8px;padding:6px;border:0">Connect</button></div>
+      </div>
+    </div>
+
+  </aside>
+</div>
+
+<!-- PRINTABLE BRIEF (1-2 pages) -->
+<section id="brief">
+  <h2 style="margin-top:0">LinkedIn Dashboard Redesign — Brief</h2>
+  <h3>Research & Insights</h3>
+  <ul>
+    <li>Key elements identified: Header (search + nav), Left sidebar (profile + quick links), Main feed (create post + activity), Right sidebar (news, people suggestions).</li>
+    <li>Opportunities: Reduce visual clutter, increase spacing, make news more scannable with cards, group quick links and provide collapsible behavior for small screens.</li>
+  </ul>
+  <h3>Design Goals</h3>
+  <ol>
+    <li>Simplify navigation and prioritize readable content hierarchy.</li>
+    <li>Improve accessibility: sufficient contrast, larger tap targets, proper focus states.</li>
+    <li>Modernize news and sidebar components to improve scannability.</li>
+  </ol>
+  <h3>Key Decisions</h3>
+  <ul>
+    <li>Header: centered search for discoverability; compact nav with icons + labels for clarity.</li>
+    <li>Sidebar: profile mini-card with quick metrics; grouped quick links to reduce cognitive load.</li>
+    <li>Main feed: profile summary at top to encourage personal branding; create-post uses rounded input and discrete action buttons.</li>
+    <li>News: card layout to allow quick skimming and better visual separation from feed.</li>
+  </ul>
+  <h3>Accessibility Notes</h3>
+  <p>Inputs and buttons include focus styles. Font sizes selected for legibility and ARIA labels added for core interactive controls. Contrast ratio checked for primary elements (LinkedIn blue on white meets contrast).</p>
+  <h3>Next Steps</h3>
+  <p>1) Move design into Figma and recreate components as variants for reusable system. 2) Add micro-interactions (hover, focus, enter post). 3) Iterate with usability testing on small group.</p>
+  <p style="margin-top:16px">Portfolio link: <a href="#">(Insert portfolio URL here)</a></p>
+</section>
+
+</body>
+<script src="LinkdIn.js"></script>
+</html>
